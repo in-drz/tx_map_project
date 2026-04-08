@@ -266,3 +266,22 @@ map.on('load', () => {
         });
     }
 }); // <-- THIS WAS MISSING
+
+// Sidebar Toggle Logic
+const sidebar = document.getElementById('control-panel');
+const toggleBtn = document.getElementById('toggle-sidebar');
+
+if (sidebar && toggleBtn) {
+    toggleBtn.addEventListener('click', () => {
+        sidebar.classList.toggle('collapsed');
+        
+        // Update the arrow direction based on state
+        if (sidebar.classList.contains('collapsed')) {
+            toggleBtn.innerHTML = '▶'; // Pointing into map
+        } else {
+            toggleBtn.innerHTML = '◀'; // Pointing back
+        }
+    });
+} else {
+    console.error("Sidebar elements not found. Check your HTML IDs.");
+}
