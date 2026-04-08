@@ -267,21 +267,21 @@ map.on('load', () => {
     }
 }); // <-- THIS WAS MISSING
 
-// Sidebar Toggle Logic
 const sidebar = document.getElementById('control-panel');
 const toggleBtn = document.getElementById('toggle-sidebar');
 
 if (sidebar && toggleBtn) {
-    toggleBtn.addEventListener('click', () => {
+    toggleBtn.addEventListener('click', (e) => {
+        e.preventDefault(); // Prevents "ghost clicks" on mobile
         sidebar.classList.toggle('collapsed');
         
-        // Update the arrow direction based on state
-        if (sidebar.classList.contains('collapsed')) {
-            toggleBtn.innerHTML = '▶'; // Pointing into map
+        const isCollapsed = sidebar.classList.contains('collapsed');
+        
+        // Use a simple icon change; the CSS handles the rotation
+        if (isCollapsed) {
+            toggleBtn.innerHTML = '▶'; 
         } else {
-            toggleBtn.innerHTML = '◀'; // Pointing back
+            toggleBtn.innerHTML = '◀';
         }
     });
-} else {
-    console.error("Sidebar elements not found. Check your HTML IDs.");
 }

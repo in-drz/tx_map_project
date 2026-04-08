@@ -124,23 +124,27 @@ summary:hover {
         bottom: 0;
         left: 0;
         width: 100%;
+        margin: 0;
         border-radius: 20px 20px 0 0;
-        padding-bottom: env(safe-area-inset-bottom, 20px); /* iPhone Notch support */
-        box-sizing: border-box;
+        /* Ensure it starts at the very bottom */
+        transform: translateY(0); 
     }
 
-    /* Slides down instead of left on mobile */
+    /* This is the magic fix for mobile */
     .overlay.collapsed {
-        transform: translateY(calc(100% - 50px)); 
+        transform: translateY(calc(100% - 50px)) !important; 
+        /* The !important ensures it overrides the 'translateX' from desktop */
     }
 
     .collapse-btn {
-        top: -35px;
+        top: -40px; /* Moves button above the sheet */
         right: 20px;
-        border-radius: 8px 8px 0 0;
-        border-left: 1px solid #ddd;
+        width: 50px; /* Bigger hit area for thumbs */
+        height: 40px;
+        border-radius: 10px 10px 0 0;
+        transform: rotate(90deg); /* Rotates the arrow to point up/down */
+        border: 1px solid #ddd;
         border-bottom: none;
-        transform: rotate(90deg); /* Arrow points up/down */
     }
 }
 
