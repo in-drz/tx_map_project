@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Texas CD-15 & School Districts</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <link href="https://api.mapbox.com/mapbox-gl-js/v3.0.1/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v3.0.1/mapbox-gl.js"></script>
+    
+    <link href="css/style.css" rel="stylesheet">
+
+    <style>
+        /* Essential popup styles that work with the tabbed JS logic */
+        .popup-tabs-container {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: #2c3e50;
+        }
+        
+        .popup-tabs-container h3 {
+            margin: 10px 0 5px 0;
+            font-size: 16px;
+            font-weight: 700;
+        }
+        
+        .popup-tabs-container ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        
+        .popup-tabs-container li {
+            padding: 8px 0;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 13px;
+            line-height: 1.4;
+        }
+        
+        .popup-tabs-container li:last-child {
+            border-bottom: none;
+        }
+
+        .popup-tabs-container small {
+            color: #6a737d;
+            display: block;
+            margin-top: 2px;
+        }
+
+        /* Customize the Mapbox popup tip and close button */
+        .mapboxgl-popup-close-button {
+            padding: 5px 10px;
+            font-size: 18px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="overlay" id="control-panel">
+        <h2>Map Layers</h2>
+        
+        <details open>
+            <summary>Congressional District 15</summary>
+            <div class="content">
+                <div class="layer-item">
+                    <input type="checkbox" id="overall-outline-toggle" checked>
+                    <label for="overall-outline-toggle">
+                        <span class="legend-key" style="border: 2px solid #2c3e50; background: transparent;"></span>
+                        District Border
+                    </label>
+                </div>
+                <div class="layer-item">
+                    <input type="checkbox" id="precincts-toggle" checked>
+                    <label for="precincts-toggle">
+                        <span class="legend-key precincts-key"></span>
+                        Precinct Fills
+                    </label>
+                </div>
+                <div class="layer-item">
+                    <input type="checkbox" id="boundaries-toggle" checked>
+                    <label for="boundaries-toggle">
+                        <span class="legend-key outline-key"></span>
+                        Precinct Outlines
+                    </label>
+                </div>
+            </div>
+        </details>
+
+        <details open>
+            <summary>Education Districts</summary>
+            <div class="content">
+                <div class="layer-item">
+                    <input type="checkbox" id="schools-toggle" checked>
+                    <label for="schools-toggle">
+                        <span class="legend-key schools-key"></span>
+                        School Districts
+                    </label>
+                </div>
+            </div>
+        </details>
+        
+        <div style="margin-top: 15px; font-size: 11px; color: #888; text-align: center;">
+            Tap a precinct or district for details.
+        </div>
+    </div>
+
+    <div id="map"></div>
+
+    <script src="js/map.js"></script>
+
+</body>
+</html>
